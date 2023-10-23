@@ -172,6 +172,9 @@ def always_roll(n):
     assert n >= 0 and n <= 10
     # BEGIN PROBLEM 6
     "*** YOUR CODE HERE ***"
+    def strategy(score, opponent_score):
+        return n
+    return strategy
     # END PROBLEM 6
 
 
@@ -201,7 +204,13 @@ def is_always_roll(strategy, goal=GOAL):
     False
     """
     # BEGIN PROBLEM 7
+    always = strategy(0,0)
     "*** YOUR CODE HERE ***"
+    for i in range(goal):
+        for j in range(goal):
+            if(strategy(i,j) != always):
+                return False
+    return True
     # END PROBLEM 7
 
 
@@ -218,6 +227,12 @@ def make_averaged(original_function, total_samples=1000):
     """
     # BEGIN PROBLEM 8
     "*** YOUR CODE HERE ***"
+    def compute_average(*args):
+        total = 0
+        for i in range(total_samples):
+            total += original_function(*args)
+        return total / total_samples
+    return compute_average
     # END PROBLEM 8
 
 
@@ -232,6 +247,14 @@ def max_scoring_num_rolls(dice=six_sided, total_samples=1000):
     """
     # BEGIN PROBLEM 9
     "*** YOUR CODE HERE ***"
+    max_dice = 0
+    max_num = 1
+    for i in range(1,11):
+        average = make_averaged(roll_dice, total_samples)(i, dice)
+        if average > max_dice:
+            max_dice = average
+            max_num = i
+    return max_num
     # END PROBLEM 9
 
 
@@ -275,6 +298,8 @@ def tail_strategy(score, opponent_score, threshold=12, num_rolls=6):
     points, and returns NUM_ROLLS otherwise. Ignore score and Square Swine.
     """
     # BEGIN PROBLEM 10
+    if(tail_points(opponent_score) >= threshold):
+        return 0
     return num_rolls  # Remove this line once implemented.
     # END PROBLEM 10
 
@@ -282,6 +307,9 @@ def tail_strategy(score, opponent_score, threshold=12, num_rolls=6):
 def square_strategy(score, opponent_score, threshold=12, num_rolls=6):
     """This strategy returns 0 dice when your score would increase by at least threshold."""
     # BEGIN PROBLEM 11
+    squ = square_update(0, score, opponent_score)
+    if(squ - score >= threshold):
+        return 0
     return num_rolls  # Remove this line once implemented.
     # END PROBLEM 11
 
