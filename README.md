@@ -6,3 +6,6 @@ vedio:https://www.youtube.com/watch?v=0P4kOL7pFFo&list=PL6BsET-8jgYWZlcJMOuWFSXK
 textbook:https://www.composingprograms.com/
 
 translated:https://composingprograms.netlify.app/
+
+
+hw04的倒数第二道题一直ok跑不过，明明我本地就能跑过的

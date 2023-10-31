@@ -25,6 +25,13 @@ def flatten(s):
     [[1, [1, [1, [1, 1, [1, 1, [1]]]], 1]]]
     """
     "*** YOUR CODE HERE ***"
+    s1 = []
+    for i in s:
+        if type(i) == list:
+            s1 += flatten(i)
+        else:
+            s1.append(i)
+    return s1
 
 
 def my_map(fn, seq):
@@ -39,7 +46,7 @@ def my_map(fn, seq):
     2023
     [None, None, None]
     """
-    return ______
+    return [fn(x) for x in seq]
 
 
 def my_filter(pred, seq):
@@ -58,7 +65,7 @@ def my_filter(pred, seq):
     >>> my_filter(lambda x: max(5, x) == 5, [1, 2, 3, 4, 5, 6, 7])
     [1, 2, 3, 4, 5]
     """
-    return ______
+    return [x for x in seq if pred(x)]
 
 
 def my_reduce(combiner, seq):
@@ -74,6 +81,12 @@ def my_reduce(combiner, seq):
     11
     """
     "*** YOUR CODE HERE ***"
+    for i in range(1, len(seq)+1):
+        if i == 1:
+            result = seq[0]
+        else:
+            result = combiner(result, seq[i-1])
+    return result
 
 
 def my_map_syntax_check():
@@ -113,6 +126,11 @@ def distance(city_a, city_b):
     5.0
     """
     "*** YOUR CODE HERE ***"
+    x1 = get_lat(city_a)
+    y1 = get_lon(city_a)
+    x2 = get_lat(city_b)
+    y2 = get_lon(city_b)
+    return sqrt((x1-x2)**2+(y1-y2)**2)
 
 
 def closer_city(lat, lon, city_a, city_b):
@@ -131,6 +149,10 @@ def closer_city(lat, lon, city_a, city_b):
     'Bucharest'
     """
     "*** YOUR CODE HERE ***"
+    test = make_city('test', lat, lon)
+    if distance(test, city_a) < distance(test, city_b):
+        return get_name(city_a)
+    return get_name(city_b)
 
 
 def check_city_abstraction():
@@ -221,7 +243,7 @@ def count_palindromes(L):
     >>> count_palindromes(("Acme", "Madam", "Pivot", "Pip"))
     2
     """
-    return ______
+    return len(list(filter(lambda x:x==x[::-1],list(map(lambda x: x.lower(), L)))))
 
 
 def coords(fn, seq, lower, upper):
@@ -232,7 +254,7 @@ def coords(fn, seq, lower, upper):
     [[-2, 4], [1, 1], [3, 9]]
     """
     "*** YOUR CODE HERE ***"
-    return ______
+    return [[x, fn(x)] for x in seq if fn(x) >= lower and fn(x) <= upper]
 
 
 def change_abstraction(change):
