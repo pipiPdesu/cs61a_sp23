@@ -9,3 +9,5 @@ translated:https://composingprograms.netlify.app/
 
 
 hw04的倒数第二道题一直ok跑不过，明明我本地就能跑过的
+
+lab06 >>> iter(s)竟然是返回Iterator 
