@@ -149,6 +149,9 @@ def pizza_sort(lst):
 
 
 def pizza_sort_helper(lst, start):
+    '''
+    reverse the biggest element to the end, then reverse back
+    '''
     if start <= len(lst) - 1:
         print("DEBUG:1",lst,index_largest(lst[start:]))
         partial_reverse(lst, index_largest(lst[start:])+start)#forget to plus start
