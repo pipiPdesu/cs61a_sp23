@@ -9,6 +9,8 @@ translated:https://composingprograms.netlify.app/
 
 如果你卡在哪里， 直接在github上搜代码
 
+后六周的optional不做了先，回来有空再补
+
 hw04的倒数第二道题一直ok跑不过，明明我本地就能跑过的
 
 lab06 >>> iter(s)竟然是返回Iterator 
