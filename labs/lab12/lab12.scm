@@ -1,4 +1,8 @@
-(define (substitute s old new) 'YOUR-CODE-HERE)
+(define (substitute s old new) 
+  (if (null? s)
+    nil
+    (cons (if (equal? (car s) old) new (car s))
+          (substitute (cdr s) old new))))
 
 ; Feel free to use these helper procedures in your solution
 (define (map fn s)
